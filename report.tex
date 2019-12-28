@@ -1,0 +1,96 @@
+% !TeX root = ./report.tex
+% !TeX encoding = UTF-8 Unicode
+% !TeX spellcheck = it_IT
+% !TeX program = arara
+% !TeX options = --log --verbose --language=it "%DOC%"
+
+% arara: lualatex:      { interaction: batchmode }
+% arara: lualatex:      { interaction: nonstopmode, synctex: yes }
+
+\documentclass[a4paper,11pt,twoside,notitlepage,final]{scrartcl}
+
+\usepackage{fancyvrb}
+
+\begin{VerbatimOut}{\jobname.xmpdata}
+\Title{Fertility Dataset Analysis}
+\Author{Niccolò Maltoni}
+\Copyright{Questo documento è fornito sotto licenza Creative Commons Attribution-ShareAlike 4.0 International}
+\CopyrightURL{http://creativecommons.org/licenses/by-sa/4.0}
+\end{VerbatimOut}
+
+\usepackage[english,italian]{varioref}
+\usepackage[a-1b]{pdfx}
+
+%% Font
+\usepackage{fontspec}
+\setmainfont[Ligatures=TeX]{Latin Modern Roman}
+\setsansfont[Ligatures=TeX]{Latin Modern Sans}
+\setmonofont[Ligatures=TeX]{Latin Modern Mono}
+
+%% Matematica
+\usepackage{amsmath}
+\usepackage[math-style=ISO]{unicode-math}
+\setmathfont[Ligatures=TeX]{Latin Modern Math}
+\usepackage[output-decimal-marker={,},binary-units]{siunitx}
+
+%% Lingue
+\usepackage[strict=true,autostyle=true,english=american,italian=guillemets]{csquotes}
+\usepackage{polyglossia}
+\setmainlanguage[babelshorthands]{italian}
+\setotherlanguage[variant=american]{english}
+
+%% Altri pacchetti
+\usepackage{graphicx}
+\graphicspath{{fig}}
+\usepackage{xcolor}
+% \usepackage{subcaption}
+% \usepackage{caption}
+\usepackage{scrhack}
+\usepackage{float}
+
+\usepackage{geometry}
+\geometry{a4paper,heightrounded}
+\usepackage{setspace}
+\onehalfspacing{}
+
+% \usepackage[maxcitenames=2,mincitenames=2,maxbibnames=99,minbibnames=99,style=ieee,giveninits=true,backend=biber]{biblatex}
+% \addbibresource{biblio.bib}
+
+% \usepackage[htt]{hyphenat}
+% \usepackage{enumerate}
+
+\usepackage{microtype}
+
+\hypersetup{%
+  pdfpagemode={UseNone},
+  hidelinks,
+  hypertexnames=false,
+  linktoc=all,
+  unicode=true,
+  pdftoolbar=false,
+  pdfmenubar=false,
+  plainpages=falsebreaklinks,
+  pdfstartview={Fit},
+  pdflang={it}
+}
+
+\usepackage[english,italian,nameinlink]{cleveref}
+
+\title{\LARGE{\textbf{Fertility Dataset Analysis}}}
+
+\author{Niccolò~Maltoni}
+
+\date{%
+  \small{Data Mining}\\%
+  \small{Anno accademico 2019}
+}
+
+\begin{document}
+
+\maketitle
+
+\section{Descrizione del Dataset}
+\section{Analisi dei dati}
+\section{Grafici}
+
+\end{document}
