@@ -2,6 +2,8 @@
   "recommendations": [
     "EditorConfig.EditorConfig",
     "James-Yu.latex-workshop",
-    "KnisterPeter.vscode-commitizen"
+    "KnisterPeter.vscode-commitizen",
+    "streetsidesoftware.code-spell-checker",
+    "streetsidesoftware.code-spell-checker-italian"
   ]
 }
