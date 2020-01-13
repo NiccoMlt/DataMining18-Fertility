@@ -54,10 +54,10 @@ Esso è composto dai dati di 100 volontari che hanno fornito un campione di seme
   3. summer
   4. fall
 
-- Age at the time of analysis (0, 1)
+- Age at the time of analysis (range 0-1)
   
-  - 18
-  - 36
+  - 18 is 0.5
+  - 36 is 1
 
 - Childish diseases (ie: chicken pox, measles, mumps, polio) (0, 1)
   
@@ -94,12 +94,12 @@ Esso è composto dai dati di 100 volontari che hanno fornito un campione di seme
   2. occasional
   3. daily
 
-- Number of hours spent sitting per day ene-16 (0, 1)
+- Number of hours spent sitting per day from 1 to 16 (range 0-1)
 
 - Output (N, O) 
   
-  - Diagnosis normal
-  - Diagnosis altered
+  1. Diagnosis normal
+  2. Diagnosis altered
 
 ### Licenze e riferimenti
 

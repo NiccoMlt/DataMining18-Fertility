@@ -38,8 +38,9 @@
   "latex-workshop.latex.magic.args": [
     "%DOC%"
   ],
-  "cSpell.language": "it",
-  "cSpell.userWords": [
+  "cSpell.language": "it,it-IT,en",
+  "cSpell.words": [
+    "Bayesiani",
     "dataset"
-  ]
+  ],
 }

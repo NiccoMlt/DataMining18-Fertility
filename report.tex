@@ -19,19 +19,24 @@
 \end{VerbatimOut}
 
 \usepackage[english,italian]{varioref}
+
+\usepackage[luatex,dvipsnames,table,xcdraw]{xcolor}
 \usepackage[a-1b]{pdfx}
 
 %% Font
 \usepackage{fontspec}
-\setmainfont[Ligatures=TeX]{Latin Modern Roman}
-\setsansfont[Ligatures=TeX]{Latin Modern Sans}
-\setmonofont[Ligatures=TeX]{Latin Modern Mono}
+\defaultfontfeatures{Ligatures=TeX}
+\setmainfont[SmallCapsFont={* Caps}]{Latin Modern Roman}
+\setsansfont{Latin Modern Sans}
 
 %% Matematica
 \usepackage{amsmath}
 \usepackage[math-style=ISO]{unicode-math}
-\setmathfont[Ligatures=TeX]{Latin Modern Math}
+\setmathfont{Latin Modern Math}
 \usepackage[output-decimal-marker={,},binary-units]{siunitx}
+
+\defaultfontfeatures{} % reset per mono font
+\setmonofont{Latin Modern Mono}
 
 %% Lingue
 \usepackage[strict=true,autostyle=true,english=american,italian=guillemets]{csquotes}
@@ -42,9 +47,15 @@
 %% Altri pacchetti
 \usepackage{graphicx}
 \graphicspath{{fig}}
-\usepackage{xcolor}
-% \usepackage{subcaption}
-% \usepackage{caption}
+\usepackage{xargs}
+\usepackage[colorinlistoftodos,prependcaption,textsize=tiny]{todonotes}
+\newcommandx{\unsure}[2][1=]{\todo[linecolor=red,backgroundcolor=red!25,bordercolor=red,#1]{#2}}
+\newcommandx{\change}[2][1=]{\todo[linecolor=blue,backgroundcolor=blue!25,bordercolor=blue,#1]{#2}}
+\newcommandx{\info}[2][1=]{\todo[linecolor=OliveGreen,backgroundcolor=OliveGreen!25,bordercolor=OliveGreen,#1]{#2}}
+\newcommandx{\improvement}[2][1=]{\todo[linecolor=Plum,backgroundcolor=Plum!25,bordercolor=Plum,#1]{#2}}
+\newcommandx{\thiswillnotshow}[2][1=]{\todo[disable,#1]{#2}}
+\usepackage{subcaption}
+\usepackage{caption}
 \usepackage{scrhack}
 \usepackage{float}
 
@@ -59,6 +70,7 @@
 % \usepackage[htt]{hyphenat}
 % \usepackage{enumerate}
 
+\usepackage{xurl}
 \usepackage{microtype}
 
 \hypersetup{%
@@ -69,7 +81,8 @@
   unicode=true,
   pdftoolbar=false,
   pdfmenubar=false,
-  plainpages=falsebreaklinks,
+  plainpages=false,
+  breaklinks,
   pdfstartview={Fit},
   pdflang={it}
 }
@@ -82,15 +95,170 @@
 
 \date{%
   \small{Data Mining}\\%
-  \small{Anno accademico 2019}
+  \small{Anno accademico 2019--2020}
 }
 
 \begin{document}
 
 \maketitle
 
-\section{Descrizione del dataset}
-\section{Analisi dei dati}
+\section{Introduzione}\label{sec:intro}
+
+Per la produzione dell'elaborato, si è scelto di condurre le operazioni di studio e mining dei dati sul dataset chiamato \emph{Fertility Data Set}\footnote{\url{http://archive.ics.uci.edu/ml/datasets/Fertility}}, prelevato dal sito \emph{UCI Machine Learning}.
+In questa \nameCref{sec:intro} verranno presentati il dataset sul quale è stato svolto il lavoro.
+Verrà preso in considerazione il dominio di provenienza del dataset e la struttura dei dati in esso contenuti prima di apportarne delle modifiche,
+per poter essere in grado di dedurre conoscenza dai dati in questione.
+
+\subsection{Descrizione del dominio}
+
+Il dataset contiene i risultati degli esami di fertilità effettuati su campioni di seme secondo i criteri dell'Organizzazione Mondiale della Sanità (\emph{World Health Organization 2010});
+l'analisi sul seme maschile permettono infatti di individuare potenziali problemi di sterilità nei pazienti.
+
+La possibilità di alterazioni del seme possono essere correlate ad aspetti diversi della vita dell'individuo:
+oltre alla genetica, pare che la sterilità maschile possa essere correlata anche a fattori socio-demografici, ambientali e di stile di vita.
+
+Può essere interessante analizzare quanto effettivamente la presenza di malattie e traumi non necessariamente locali all'apparato genitale possano incidere sulla fertilità del paziente,
+come anche uno stile di vita particolarmente sedentario o il consumo abituale di sostanze non ritenute particolarmente salutari come tabacco da fumo e alcool.
+In questo modo, tramite Data Mining sarebbe possibile aiutare la diagnosi medica tramite il supporto informatico.
+
+% Fertility rates have dramatically decreased in the last two decades, especially in men. It has been described that environmental factors, as well as life habits, may affect semen quality.
+% Artificial intelligence techniques are now an emerging methodology as decision support systems in medicine.
+% In this paper we compare three artificial intelligence techniques, decision trees, Multilayer Perceptron and Support Vector Machines,
+% in order to evaluate their performance in the prediction of the seminal quality from the data of the environmental factors and lifestyle.
+% To do that we collect data by a normalized questionnaire from young healthy volunteers and then, we use the results of a semen analysis to asses the accuracy in the prediction of the three classification methods mentioned above.
+% The results show that Multilayer Perceptron and Support Vector Machines show the highest accuracy, with prediction accuracy values of 86\% for some of the seminal parameters.
+% In contrast decision trees provide a visual and illustrative approach that can compensate the slightly lower accuracy obtained.
+% In conclusion artificial intelligence methods are a useful tool in order to predict the seminal profile of an individual from the environmental factors and life habits.
+% From the studied methods, Multilayer Perceptron and Support Vector Machines are the most accurate in the prediction.
+% Therefore these tools, together with the visual help that decision trees offer, are the suggested methods to be included in the evaluation of the infertile patient.
+
+\subsection{Descrizione del dataset}
+
+Questo dataset contiene i risultati degli esami di fertilità di 100 uomini;
+il risultato di questi esami può essere di due tipologie, Normale oppure Alterato, che indica un potenziale problema di sterilità nel paziente.
+Questi risultati sono correlati all'interno del dataset con altri dati di natura socio-demografica, ambientale e abitudinaria dei soggetti analizzati.
+
+Il file \href{http://archive.ics.uci.edu/ml/machine-learning-databases/00244/fertility_Diagnosis.txt}{\texttt{fertility\_Diagnosis.txt}}
+contiene l'intero dataset, costituito da linee costituenti i record, con gli attributi separati da virgole.
+Al suo interno, sono presenti \emph{100 istanze} composte di \emph{10 attributi};
+di seguito sono riportati con una breve descrizione.
+
+\begin{description}
+  \item[Stagione]
+    Attributo nominale che rappresenta la stagione in cui è stato svolto l'esame.
+    Può assumere quattro possibili valori, corrispondenti alle stagioni astronomiche dell'anno solare:
+    \begin{itemize}
+      \item \texttt{-1}: \emph{primavera};
+      \item \texttt{-0.33}: \emph{estate};
+      \item \texttt{0.33}: \emph{autunno};
+      \item \texttt{1}: \emph{inverno}.
+    \end{itemize}
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori della stagione}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:season}
+    % \end{figure}
+  \item[Età]
+    Attributo che rappresenta l'età dei partecipanti al test al momento dell'analisi.
+    Può assumere valori numerici in un range compreso tra \texttt{0.5} (corrispondente a 18 anni) e \texttt{1} (corrispondente a 36 anni).
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori dell'età}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:age}
+    % \end{figure}
+  \item[Malattie infantili]
+    Attributo binario che rappresenta la presenza o meno di patologie clinicamente rilevanti (\emph{Varicella}, \emph{Orecchioni}, \emph{Morbillo}, etc.) contratte dal paziente durante l'infanzia.
+    % \unsure{Davvero sono a rovescio!?}
+    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori delle malattie}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:disease}
+    % \end{figure}
+  \item[Incidenti o traumi seri]
+    Attributo binario che rappresenta la presenza o meno di traumi/incidenti rilevanti nella storia clinica del paziente.
+    % \unsure{Davvero sono a rovescio!?}
+    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori dei traumi}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:trauma}
+    % \end{figure}
+  \item[Interventi chirurgici]
+    Attributo binario che rappresenta la presenza o meno di interventi chirurgici nella storia clinica del paziente.
+    % \unsure{Davvero sono a rovescio!?}
+    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori delle operazioni chirurgiche}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:surgical}
+    % \end{figure}
+  \item[Febbre]
+    Attributo nominale che rappresenta l'aver contratto, da parte del candidato, febbri particolarmente alte nell'ultimo anno:
+    Può assumere tre possibili valori, corrispondenti al periodo:
+    \begin{itemize}
+      \item \texttt{-1}: \emph{meno di tre mesi} dalla data dell'analisi;
+      \item \texttt{0}: \emph{più di tre mesi} dalla data dell'analisi;
+      \item \texttt{1}: \emph{mai nell'ultimo anno}.
+    \end{itemize}
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori della febbre}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:fever}
+    % \end{figure}
+  \item[Consumo di alcool]
+    Attributo nominale che rappresenta la frequenza del consumo di alcool, del soggetto in analisi.
+    Può assumere cinque valori:
+    \begin{itemize}
+      \item \texttt{0.2}: \emph{più volte al giorno};
+      \item \texttt{0.4}: \emph{una volta al giorno};
+      \item \texttt{0.6}: \emph{più volte alla settimana};
+      \item \texttt{0.8}: \emph{una volta a settimana};
+      \item \texttt{1}: \emph{molto raramente o mai}.
+    \end{itemize}
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori dell'alcool}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:alcool}
+    % \end{figure}
+  \item[Fumo]
+    Attributo nominale che rappresenta le abitudini del soggetto rispetto al fumo.
+    Può assumere tre valori:
+    \begin{itemize}
+      \item \texttt{-1}: \emph{non fumatore};
+      \item \texttt{0}: \emph{fumatore sporadico};
+      \item \texttt{1}: \emph{fumatore abituale}.
+    \end{itemize}
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori del fumo}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:smoke}
+    % \end{figure}
+  \item[Ore spese seduto]
+    Attributo che quantifica le ore trascorse seduto al giorno dal soggetto.
+    Può assumere valori numerici in un range compreso tra \texttt{0.06} (corrispondente a un'ora) e \texttt{1} (16 ore).
+    % \begin{figure}[H]
+    %   \centering
+    %   \missingfigure[figwidth=0.5\textwidth]{Distribuzione dei valori delle ore passate seduto}
+    %   \caption{Media: \(x\) Deviazione Standard: \(y\)}%
+    %   \label{fig:sitting}
+    % \end{figure}
+  \end{description}
+
+Oltre agli attributi sopra riportati, i record del dataset sono etichettati con un attributo classe corrispondente alla diagnosi:
+il carattere \texttt{N} corrisponde ad una situazione clinica \emph{normale}, mentre \texttt{O} corrisponde ad una diagnosi \emph{alterata}.
+
+% Il problema delineato è dunque affrontabile come un quesito di classificazione binaria:
+% si deve infatti poter costruire un modello che, dati certi parametri per gli attributi presi in causa, permetta di prevedere un potenziale problema di fertilità o meno.
+
 \section{Grafici}
 
 \end{document}
