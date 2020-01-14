@@ -1,0 +1,20 @@
+\section{Preprocessing dei dati}
+
+In questa sezione vengono applicate trasformazioni ai dati al fine di aumentare la qualità dell'output dei vari algoritmi e di garantire delle performance migliori.
+
+Non si è ritenuto necessario aggregare o eliminare attributi, in quanto il numero di questi è molto ridotto e non sono presenti attributi linearmente dipendenti tra di loro.
+
+\subsection{Importazione in Weka}
+
+Tutte le analisi sui dati sono state effettuate tramite il software Weka\footnote{\url{https://www.cs.waikato.ac.nz/ml/weka/}}.
+
+Il file, come detto nella \Vref{subsec:intro:dataset}, è di fatto un CSV senza linea di \emph{header}.
+Purtroppo, forzando l'import del file come CSV senza effettuare modifiche non ha funzionato, anche mettendo a \texttt{true} il flag \texttt{noHeaderRowPresent};
+si è dunque proceduto aggiungendo manualmente al file una linea di intestazione con i nomi delle colonne, risolvendo il problema.
+
+
+
+\subsection{Pulizia}
+\subsection{Normalizzazione}
+\subsection{Campionamento}
+\subsection{Discretizzazione}
