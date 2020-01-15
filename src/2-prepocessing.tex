@@ -12,9 +12,26 @@ Il file, come detto nella \Vref{subsec:intro:dataset}, è di fatto un CSV senza 
 Purtroppo, forzando l'import del file come CSV senza effettuare modifiche non ha funzionato, anche mettendo a \texttt{true} il flag \texttt{noHeaderRowPresent};
 si è dunque proceduto aggiungendo manualmente al file una linea di intestazione con i nomi delle colonne, risolvendo il problema.
 
-
+Ispezionando i dati importati, risulta subito evidente che Weka non ha compreso automaticamente la natura dei dati:
+gli attributi che dovrebbero essere \emph{nominali} o \emph{binari}, avendo valori composti da numeri, vengono invece considerati \emph{numerici}.
+Si è dunque proceduto applicando il filtro \texttt{NumericToNominal} per trasformare gli attributi 1, 6, 7 e 8 in nominali
+e il filtro \texttt{NumericToBinary} per trasformare gli attributi 3, 4 e 5 in binari (nonostante Weka li tratti, di fatto, come nominali).
+Poiché il filtro \texttt{NumericToBinary} rinomina gli attributi aggiungendo ``\texttt{\_binarized}'',
+questi suffissi sono stati rimossi tramite filtro \texttt{RenameAttribute} passando la regex \verb|([\s\S]+)_binarized|.
 
 \subsection{Pulizia}
+
+In questa fase si è controllato il dataset al fine di rilevare eventuali problemi con i dati e provare a gestirli.
+Fortunatamente, il controllo manuale ha confermato quanto si poteva comprendere anche dalla tabella descrittiva sul sito riportato nella~\Cref{note:dataset}:
+il dataset risulta privo di record duplicati e di attributi mancanti.
+
+Non è stato dunque necessario pulire ulteriormente il dataset oltre ai filtri applicati per la corretta importazione in Weka.
+
 \subsection{Normalizzazione}
-\subsection{Campionamento}
-\subsection{Discretizzazione}
+
+Oltre le limitate trasformazioni necessario alla corretta importazione dei dati, l'unica trasformazione applicata è stata la \emph{normalizzazione},
+per rendere i range dei vari attributi omogenei tra di loro.
+
+\todo[inline]{Spiegare meglio}
+
+Non è stato necessario applicare \unsure{Serve specificarlo?} alcuna tecnica di campionamento o selezione degli attributi.
