@@ -101,7 +101,13 @@ Esso è composto dai dati di 100 volontari che hanno fornito un campione di seme
   1. Diagnosis normal
   2. Diagnosis altered
 
-### Licenze e riferimenti
+## Software utilizzato e figure
+
+Le analisi sono state realizzate attraverso il software [Weka](https://www.cs.waikato.ac.nz/ml/weka/).
+
+Le figure del documento sono state estratte dal software tramite interfaccia di esportazione invocabile con <kbd>ctrl</kbd> + <kbd>alt</kbd> + <kbd>shift</kbd> + <kbd>left click</kbd>.
+
+## Licenze e riferimenti
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![License: CC BY-SA 4.0](https://img.shields.io/badge/License-CC%20BY--SA%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-sa/4.0/)
@@ -112,6 +118,6 @@ Il contenuto dell'opera testuale da me personalmente scritto è fornito sotto li
 
 Il dataset incluso e le relative ricerche nell'ambito sono contenuti apparententi ai rispettivi proprietari.
 
-#### Paper rilevante
+### Paper rilevante
 
 > Méndez, David Gil, Jose Luis Girela, Joaquin De Juan, María José Gómez-Torres and Magnus Johnsson. “Predicting seminal quality with artificial intelligence methods.” Expert Syst. Appl. 39 (2012): 12564-12573.
