@@ -1,0 +1,94 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 720 1150
+%%CreationDate: Thu Jan 16 11:36:21 CET 2020
+/Oval { % x y w h filled
+gsave
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+x w 2 div add y h 2 div sub translate
+1 h w div scale
+filled {0 0 moveto} if
+0 0 w 2 div 0 360 arc
+filled {closepath fill} {stroke} ifelse grestore} bind def
+/Rect { % x y w h filled
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+newpath 
+x y moveto
+w 0 rlineto
+0 h neg rlineto
+w neg 0 rlineto
+closepath
+filled {fill} {stroke} ifelse} bind def
+%%BeginProlog
+%%EndProlog
+%%Page 1 1
+/(Monospaced.plain) findfont
+11 scalefont setfont
+0.0 0.0 0.0 setrgbcolor
+/(Monospaced.plain) findfont
+12 scalefont setfont
+0.2 0.2 0.2 setrgbcolor
+1.0 1.0 1.0 setrgbcolor
+0 1150 720 1150 true Rect
+0.2 0.2 0.2 setrgbcolor
+5 1133 moveto (=== Run information ===) show stroke
+5 1103 moveto (Scheme:       weka.classifiers.trees.J48 -U -M 2) show stroke
+5 1088 moveto (Relation:     fertility_Diagnosis) show stroke
+5 1073 moveto (Instances:    100) show stroke
+5 1058 moveto (Attributes:   10) show stroke
+5 1043 moveto (              season) show stroke
+5 1028 moveto (              age) show stroke
+5 1013 moveto (              childish-disease) show stroke
+5 998 moveto (              trauma) show stroke
+5 983 moveto (              surgical-intervention) show stroke
+5 968 moveto (              fevers) show stroke
+5 953 moveto (              alcoholic) show stroke
+5 938 moveto (              smoking) show stroke
+5 923 moveto (              sitting) show stroke
+5 908 moveto (              output) show stroke
+5 893 moveto (Test mode:    10-fold cross-validation) show stroke
+5 863 moveto (=== Classifier model \(full training set\) ===) show stroke
+5 833 moveto (J48 unpruned tree) show stroke
+5 818 moveto (------------------) show stroke
+5 788 moveto (age <= 0.64: N \(46.0/1.0\)) show stroke
+5 773 moveto (age > 0.64) show stroke
+5 758 moveto (|   trauma = 0) show stroke
+5 743 moveto (|   |   surgical-intervention = 0) show stroke
+5 728 moveto (|   |   |   smoking = -1: N \(7.0\)) show stroke
+5 713 moveto (|   |   |   smoking = 0: N \(1.0\)) show stroke
+5 698 moveto (|   |   |   smoking = 1: O \(3.0/1.0\)) show stroke
+5 683 moveto (|   |   surgical-intervention = 1) show stroke
+5 668 moveto (|   |   |   fevers = -1: O \(1.0\)) show stroke
+5 653 moveto (|   |   |   fevers = 0) show stroke
+5 638 moveto (|   |   |   |   alcoholic = 0.2: O \(0.0\)) show stroke
+5 623 moveto (|   |   |   |   alcoholic = 0.4: O \(0.0\)) show stroke
+5 608 moveto (|   |   |   |   alcoholic = 0.6: O \(3.0\)) show stroke
+5 593 moveto (|   |   |   |   alcoholic = 0.8) show stroke
+5 578 moveto (|   |   |   |   |   age <= 0.67: N \(3.0\)) show stroke
+5 563 moveto (|   |   |   |   |   age > 0.67: O \(3.0\)) show stroke
+5 548 moveto (|   |   |   |   alcoholic = 1: N \(1.0\)) show stroke
+5 533 moveto (|   |   |   fevers = 1: N \(3.0\)) show stroke
+5 518 moveto (|   trauma = 1: N \(29.0/2.0\)) show stroke
+5 488 moveto (Number of Leaves  : ) show stroke
+173 488 moveto (13) show stroke
+5 458 moveto (Size of the tree : ) show stroke
+173 458 moveto (20) show stroke
+5 413 moveto (Time taken to build model: 0 seconds) show stroke
+5 383 moveto (=== Stratified cross-validation ===) show stroke
+5 368 moveto (=== Summary ===) show stroke
+5 338 moveto (Correctly Classified Instances          87               87      %) show stroke
+5 323 moveto (Incorrectly Classified Instances        13               13      %) show stroke
+5 308 moveto (Kappa statistic                          0.31  ) show stroke
+5 293 moveto (Mean absolute error                      0.1625) show stroke
+5 278 moveto (Root mean squared error                  0.3399) show stroke
+5 263 moveto (Relative absolute error                 74.6171 %) show stroke
+5 248 moveto (Root relative squared error            104.3743 %) show stroke
+5 233 moveto (Total Number of Instances              100     ) show stroke
+5 203 moveto (=== Detailed Accuracy By Class ===) show stroke
+5 173 moveto (                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class) show stroke
+5 158 moveto (                 0,943    0,667    0,912      0,943    0,927      0,314    0,625     0,906     N) show stroke
+5 143 moveto (                 0,333    0,057    0,444      0,333    0,381      0,314    0,625     0,291     O) show stroke
+5 128 moveto (Weighted Avg.    0,870    0,593    0,856      0,870    0,862      0,314    0,625     0,832     ) show stroke
+5 98 moveto (=== Confusion Matrix ===) show stroke
+5 68 moveto (  a  b   <-- classified as) show stroke
+5 53 moveto ( 83  5 |  a = N) show stroke
+5 38 moveto (  8  4 |  b = O) show stroke
