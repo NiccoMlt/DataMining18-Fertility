@@ -36,7 +36,6 @@ in quanto pensata appositamente per dataset di piccole dimensioni.
 
 \todo[inline]{Manca qualcosa?}
 
-\subsection{kNN}
 \subsection{Decision Tree}
 
 La prima tecnica di classificazione testata è stata il Decision Tree.
@@ -49,7 +48,7 @@ In primo luogo si è provato a generare un modello applicando i parametri standa
 \begin{figure}[H]
   \centering
   \adjincludegraphics[width=\linewidth,trim=0 0 0 {.3\height},clip]{fig/j48.eps}%
-  \caption{Output di J48 eseguito tramite Weka}%
+  \caption{Output di \texttt{J48} eseguito tramite Weka}%
   \label{fig:j48}
 \end{figure}
 
@@ -63,7 +62,7 @@ l'albero infatti è costruito da un'unica foglia i cui valori sono assegnati all
 
 Ovviamente questo modello non risultava di una qualità soddisfacente, probabilmente a causa del post pruning,
 il quale, in presenza di un tale sbilanciamento nella frequenza delle classi, tende a ridurre l'albero di classificazione a singola foglia.
-Per porre rimedio a questa cosa si è provato ad aumentare e diminuire il parametro \texttt{confidenceFactor}, responsabile di accentuare o smussare le operazioni di pruning;
+Per porre rimedio a questa cosa si è provato ad aumentare e diminuire \improvement{magari mettere il valore usato? 0.25} il parametro \texttt{confidenceFactor}, responsabile di accentuare o smussare le operazioni di pruning;
 anche però variando questo parametro i risultati ottenuti non sono stati particolarmente differenti.
 
 La situazione è decisamente migliorata disattivando il pruning (tramite parametro \texttt{unpruned}):
@@ -97,8 +96,37 @@ Si può dunque concludere che il classificatore \texttt{J48} non garantisce risu
 Disabilitando il post pruning e abbassando il numero minimo di elementi per foglia a 1, si può classificare correttamente poco meno della metà degli elementi appartenente a \texttt{O}, classe più difficile da individuare ma allo stesso tempo più rilevante rispetto al dominio dei dati del sistema.
 
 \subsection{Classificatori Bayesiani}
+
+Per tentare un approccio differente, ho provato a costruire un modello basato sui classificatori bayesiani,
+approccio che ignora le relazioni tra gli attributi in favore della frequenza di certi valori rispetto alle classi in gioco.
+
+Il classificatore specifico scelto per il dataset è stato \emph{Naïve Bayes} nella sua implementazione fornita da Weka (chiamata appunto \texttt{NaiveBayes});
+costruendo il modello utilizzando i parametri standard impostati dalla workbench, sono stati ottenuti i risultati mostrati in~\Cref{fig:bayes}.
+
+\begin{figure}[H]
+  \centering
+  \adjincludegraphics[width=\linewidth,trim=0 0 0 {.76\height},clip]{fig/bayes.eps}%
+  \caption{Output di \texttt{NaiveBayes} eseguito tramite Weka}%
+  \label{fig:bayes}
+\end{figure}
+
+Analizzando i risultati di questo classificatore, si possono fare diverse considerazioni:
+partendo dall'osservazione della \emph{confusion matrix} è possibile vedere come praticamente tutti i dati vengano assegnati alla classe ``\texttt{N}'', mentre ad ``\texttt{O}'' viene assegnato un solo elemento;
+ciò è ulteriormente confermato dai valori i \emph{precision} e \emph{recall} per la classe ``\texttt{O}'', che risultano essere 0.
+
+Infine, osservando \emph{ROC} si ha la conferma definitiva che il modello costruito sia decisamente inefficiente e poco performante.
+
+Le ragioni dietro alla poca efficienza del modello bayesiano per questo problema possono essere ricondotte alla mancanza dei valori di distribuzione delle probabilità reali per le classi e alla potenziale mancanza di indipendenza statistica tra attributi.
+Questi fattori, combinati allo sbilanciamento dei dati nel dataset, da cui vengono estratte le distribuzioni di probabilità necessarie al classificatore in mancanza di quelle reali, rendono inefficace il modello bayesiano su questo dataset.
+
 \subsection{Classificatori Lazy}
+
+\subsection{kNN}
+
 \subsection{Multi-Classificatori}
+
 \subsubsection{Approccio Cost-Sensitive}
+
 \subsubsection{Approccio Boosting}
+
 \subsection{Rules}
