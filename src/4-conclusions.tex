@@ -1,0 +1,14 @@
+\section{Conclusioni}
+
+Lo studio di questo dataset è stato sicuramente molto interessante, per quanto fosse complicato da analizzare;
+partendo da risultati non ottimali, è stato necessario valutare bene la struttura stessa del dataset e il funzionamento dei classificatori
+interpretare i risultati di ciascuna prova.
+
+In primo luogo, si può affermare che i modelli basati sui \emph{classificatori Lazy} producono i risultati più solidi, sebbene ancora lontani da potersi definire efficienti.
+La ragione di tale solidità può essere attribuita alla maggiore resistenza del classificatore a uno sbilanciamento della frequenza delle classi nel dataset rispetto agli altri modelli impiegati.
+
+In secondo luogo, l'impiego di multi-classificatori, sia \emph{boosting} che \emph{cost-sensitive},
+ha permesso di migliorare ulteriormente le misure di bontà e la classificazione delle istanze della classe ``\texttt{O}'', che sarebbe poi quella più rilevante.
+Tra i due, si ritiene che non si abbia un modello migliore dell'altro, bensì che tutto dipenda dal contesto in cui vengono applicati:
+se ad esempio l'obiettivo è identificare il maggior numero di potenziali pazienti con problemi di sterilità, allora conviene utilizzare il modello \emph{cost-sensitive};
+al contrario se l'interesse primario è avere un sistema che sia il più vicino possibile alla realtà modellata dai dati, allora il modello basato su \emph{Adaboost} potrebbe essere la scelta migliore.

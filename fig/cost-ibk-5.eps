@@ -1,0 +1,77 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 1662 940
+%%CreationDate: Fri Jan 17 23:54:23 CET 2020
+/Oval { % x y w h filled
+gsave
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+x w 2 div add y h 2 div sub translate
+1 h w div scale
+filled {0 0 moveto} if
+0 0 w 2 div 0 360 arc
+filled {closepath fill} {stroke} ifelse grestore} bind def
+/Rect { % x y w h filled
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+newpath 
+x y moveto
+w 0 rlineto
+0 h neg rlineto
+w neg 0 rlineto
+closepath
+filled {fill} {stroke} ifelse} bind def
+%%BeginProlog
+%%EndProlog
+%%Page 1 1
+/(Monospaced.plain) findfont
+11 scalefont setfont
+0.0 0.0 0.0 setrgbcolor
+/(Monospaced.plain) findfont
+12 scalefont setfont
+0.2 0.2 0.2 setrgbcolor
+1.0 1.0 1.0 setrgbcolor
+0 940 1662 940 true Rect
+0.2 0.2 0.2 setrgbcolor
+5 923 moveto (=== Run information ===) show stroke
+5 893 moveto (Scheme:       weka.classifiers.meta.CostSensitiveClassifier -cost-matrix "[0.0 1.0; 20.0 0.0]" -S 1 -W weka.classifiers.lazy.IBk -- -K 5 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\"") show stroke
+5 878 moveto (Relation:     fertility_Diagnosis) show stroke
+5 863 moveto (Instances:    100) show stroke
+5 848 moveto (Attributes:   10) show stroke
+5 833 moveto (              season) show stroke
+5 818 moveto (              age) show stroke
+5 803 moveto (              childish-disease) show stroke
+5 788 moveto (              trauma) show stroke
+5 773 moveto (              surgical-intervention) show stroke
+5 758 moveto (              fevers) show stroke
+5 743 moveto (              alcoholic) show stroke
+5 728 moveto (              smoking) show stroke
+5 713 moveto (              sitting) show stroke
+5 698 moveto (              output) show stroke
+5 683 moveto (Test mode:    10-fold cross-validation) show stroke
+5 653 moveto (=== Classifier model \(full training set\) ===) show stroke
+5 623 moveto (CostSensitiveClassifier using reweighted training instances) show stroke
+5 593 moveto (weka.classifiers.lazy.IBk -K 5 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\"") show stroke
+5 563 moveto (Classifier Model) show stroke
+5 548 moveto (IB1 instance-based classifier) show stroke
+5 533 moveto (using 5 nearest neighbour\(s\) for classification) show stroke
+5 488 moveto (Cost Matrix) show stroke
+5 473 moveto (  0  1) show stroke
+5 458 moveto ( 20  0) show stroke
+5 413 moveto (Time taken to build model: 0 seconds) show stroke
+5 383 moveto (=== Stratified cross-validation ===) show stroke
+5 368 moveto (=== Summary ===) show stroke
+5 338 moveto (Correctly Classified Instances          67               67      %) show stroke
+5 323 moveto (Incorrectly Classified Instances        33               33      %) show stroke
+5 308 moveto (Kappa statistic                          0.2354) show stroke
+5 293 moveto (Mean absolute error                      0.3043) show stroke
+5 278 moveto (Root mean squared error                  0.5045) show stroke
+5 263 moveto (Relative absolute error                139.7017 %) show stroke
+5 248 moveto (Root relative squared error            154.9238 %) show stroke
+5 233 moveto (Total Number of Instances              100     ) show stroke
+5 203 moveto (=== Detailed Accuracy By Class ===) show stroke
+5 173 moveto (                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class) show stroke
+5 158 moveto (                 0,648    0,167    0,966      0,648    0,776      0,318    0,739     0,941     N) show stroke
+5 143 moveto (                 0,833    0,352    0,244      0,833    0,377      0,318    0,748     0,288     O) show stroke
+5 128 moveto (Weighted Avg.    0,670    0,189    0,879      0,670    0,728      0,318    0,740     0,863     ) show stroke
+5 98 moveto (=== Confusion Matrix ===) show stroke
+5 68 moveto (  a  b   <-- classified as) show stroke
+5 53 moveto ( 57 31 |  a = N) show stroke
+5 38 moveto (  2 10 |  b = O) show stroke

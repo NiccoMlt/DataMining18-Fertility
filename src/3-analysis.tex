@@ -36,7 +36,7 @@ in quanto pensata appositamente per dataset di piccole dimensioni.
 
 \todo[inline]{Manca qualcosa?}
 
-\subsection{Decision Tree}
+\subsection{Decision Tree}\label{subsec:tree}
 
 La prima tecnica di classificazione testata è stata il Decision Tree.
 In particolare, si è scelto di usare \texttt{J48}, implementazione dell'algoritmo \emph{C4.5};
@@ -96,7 +96,7 @@ Si può dunque concludere che il classificatore \texttt{J48} non garantisce risu
 Disabilitando il post pruning e abbassando il numero minimo di elementi per foglia a \(1\), si può classificare correttamente poco meno della metà degli elementi appartenente a \texttt{O},
 classe più difficile da individuare ma allo stesso tempo più rilevante rispetto al dominio dei dati del sistema.
 
-\subsection{Classificatori Bayesiani: \emph{Naïve Bayes}}
+\subsection{Classificatori Bayesiani: \emph{Naïve Bayes}}\label{subsec:bayes}
 
 Per tentare un approccio differente, ho provato a costruire un modello basato sui classificatori bayesiani,
 approccio che ignora le relazioni tra gli attributi in favore della frequenza di certi valori rispetto alle classi in gioco.
@@ -120,7 +120,7 @@ Infine, osservando \emph{ROC} si ha la conferma definitiva che il modello costru
 Le ragioni dietro alla poca efficienza del modello bayesiano per questo problema possono essere ricondotte alla mancanza dei valori di distribuzione delle probabilità reali per le classi e alla potenziale mancanza di indipendenza statistica tra attributi.
 Questi fattori, combinati allo sbilanciamento dei dati nel dataset, da cui vengono estratte le distribuzioni di probabilità necessarie al classificatore in mancanza di quelle reali, rendono inefficace il modello bayesiano su questo dataset.
 
-\subsection{Classificatori Lazy: \emph{k-NN}}
+\subsection{Classificatori Lazy: \emph{k-NN}}\label{subsec:ibk}
 
 Altra famiglia utilizzata è stata quella dei \emph{classificatori Instance-based} o \emph{Lazy}.
 La particolarità di queste tecniche è la totale assenza di modello, sostituito da procedure di natura induttiva.
@@ -128,7 +128,7 @@ La particolarità di queste tecniche è la totale assenza di modello, sostituito
 Tra tutti i classificatori disponibili in questa famiglia, si è scelto di utilizzare \texttt{IBk}, implementazione in Weka dell'algoritmo \emph{k-NN};
 per questo classificatore è possibile impostare diversi parametri, come il numero di vicini da considerare e la metrica da utilizzare nel calcolo della distanza.
 
-\subsubsection{Utilizzando gli attributi nominali come tali}
+\subsubsection{Utilizzando gli attributi nominali come tali}\label{subsub:ibk:nominal}
 
 Applicando i parametri default di Weka, ovvero \texttt{KNN=1} e \emph{distanza euclidea}, si ottengono i risultati riportati in~\Cref{fig:ibk:1}.
 
@@ -177,7 +177,7 @@ l'unico risultato rilevante è con \texttt{KNN=9}, per il quale si raggiunge la 
 
 Di fatto, anche cambiando il numero dei vicini da considerare si può vedere che il modello arranca ancora nel riconoscimento degli elementi della classe ``\texttt{O}''.
 
-\subsubsection{Utilizzando gli attributi come numerici}
+\subsubsection{Utilizzando gli attributi come numerici}\label{subsub:ibk:numeric}
 
 Applicando gli stessi parametri per configurare il numero di vicini (tutti i numeri dispari nel range \(1\)-\(11\), con \emph{distanza euclidea}), i risultati più rilevanti sono con \texttt{KNN=3} e \texttt{KNN=5}:
 infatti, se ad esempio con \texttt{KNN=1} (opzione di default) i risultati sono leggermente peggiori rispetto all'utilizzo dei dati in formato categorico, i seguenti risultati sono invece maggiormente rilevanti:
@@ -213,28 +213,93 @@ tuttavia il modello arranca ancora nel riconoscimento degli elementi della class
 Le ragioni di questo comportamento sono molto probabilmente non solo dovute allo sbilanciamento nelle classi di output,
 ma anche alla mancanza di una separazione netta tra i dati a livello di valori degli attributi.
 
-Ritenendo di poter essere sulla buona strada, si è provato a effettuare un cambio di metrica per misurare la distanza tra punti (ovvero i dati) nello spazio:
-tra le metriche a disposizione nella workbench, si è provata la \emph{distanza di Čebyšëv} (\texttt{ChebyshevDistance} in Weka), che misura la distanza tra due vettori come la maggiore tra le differenze dei singoli attributi.
-Nelle~\Cref{fig:ibk:3-num-che,fig:ibk:5-num-che} sono riportati i risultati per \texttt{KNN=3} e \texttt{KNN=5}, che però non mostrano miglioramenti tali da poter considerare l'algoritmo particolarmente utile per il caso di studio.
+% Ritenendo di poter essere sulla buona strada, si è provato a effettuare un cambio di metrica per misurare la distanza tra punti (ovvero i dati) nello spazio:
+% tra le metriche a disposizione nella workbench, si è provata la \emph{distanza di Čebyšëv} (\texttt{ChebyshevDistance} in Weka), che misura la distanza tra due vettori come la maggiore tra le differenze dei singoli attributi.
+% Nelle~\Cref{fig:ibk:3-num-che,fig:ibk:5-num-che} sono riportati i risultati per \texttt{KNN=3} e \texttt{KNN=5}, che però non mostrano miglioramenti tali da poter considerare l'algoritmo particolarmente utile per il caso di studio.
 
-\begin{figure}[H]
-  \centering
-  \adjincludegraphics[width=0.9\linewidth,trim=0 {.1\width} {.285\width} {.32\height},clip]{fig/ibk3-num-che.eps}%
-  \caption{Output di \texttt{IBk} con \texttt{KNN=3} utilizzando attributi numerici e \emph{distanza di Čebyšëv}}%
-  \label{fig:ibk:3-num-che}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \adjincludegraphics[width=0.9\linewidth,trim=0 {.1\width} {.285\width} {.32\height},clip]{fig/ibk3-num-che.eps}%
+%   \caption{Output di \texttt{IBk} con \texttt{KNN=3} utilizzando attributi numerici e \emph{distanza di Čebyšëv}}%
+%   \label{fig:ibk:3-num-che}
+% \end{figure}
 
-\begin{figure}[H]
-  \centering
-  \adjincludegraphics[width=0.9\linewidth,trim=0 {.1\width} {.285\width} {.32\height},clip]{fig/ibk5-num-che.eps}%
-  \caption{Output di \texttt{IBk} con \texttt{KNN=5} utilizzando attributi numerici e \emph{distanza di Čebyšëv}}%
-  \label{fig:ibk:5-num-che}
-\end{figure}
+% \begin{figure}[H]
+%   \centering
+%   \adjincludegraphics[width=0.9\linewidth,trim=0 {.1\width} {.285\width} {.32\height},clip]{fig/ibk5-num-che.eps}%
+%   \caption{Output di \texttt{IBk} con \texttt{KNN=5} utilizzando attributi numerici e \emph{distanza di Čebyšëv}}%
+%   \label{fig:ibk:5-num-che}
+% \end{figure}
 
 \subsection{Multi-Classificatori}
 
+I classificatori precedentemente descritti non hanno portato a un modello particolarmente efficace;
+si è dunque deciso di provare ad utilizzare modelli a multi-classificatori.
+Tali classificatori sono infatti noti per essere particolarmente efficaci per problemi in cui classificatori singoli faticano a raggiungere performance accettabili.
+
+Tra le varie possibilità messe a disposizione da Weka, si è scelto di utilizzare due diversi algoritmi:
+\emph{Cost-Sensitive Classifier}, modello che permette di gestire dataset sbilanciati in partenza per distribuzioni delle classi e \emph{Adaboost}, classificatore appartenente alla famiglia delle tecniche di \emph{Boosting}.
+
 \subsubsection{Approccio Cost-Sensitive}
+
+I multi-classificatori \emph{cost-sensitive} sono generalmente efficaci nel gestire dataset non bilanciati, come in questo caso;
+essi infatti consentono di attribuire un peso alle istanze sbagliate delle varie classi in gioco, eseguendo così una procedura di \emph{model tuning}.
+
+L'implementazione disponibile in Weka, chiamata \texttt{CostSensitiveClassifier},
+permette di selezionare un \emph{classificatore} (i cui parametri possono essere settati a piacere) su cui costruire un modello
+e una \emph{matrice di costo} di dimensione \(N×N\) (dove \(N\) è il numero di classi in gioco) con la quale è possibile assegnare una differente penalità alle istanze classificate per ogni classe.
+
+Il primo classificatore provato è stato \texttt{J48}, specificando vari valori nella matrice di costo (accrescendo sempre più la penalità dovuta all'errata classificazione di ``\texttt{N}'' come ``\texttt{O}''):
+al crescere del peso, effettivamente la classe ``\texttt{O}'' era favorita, anche a scapito di elementi di classe ``\texttt{N}'', che venivano classificati erroneamente come ``\texttt{O}''.
+Questa tendenza era attesa e compatibile con il dominio preso in considerazione:
+è infatti più utile avere diagnosticate possibili alterazioni sulla situazione clinica che, con ulteriori analisi, si rivelino non vere che non riconoscere problematiche in paziente effettivamente malato.
+
+Il valore che sembra garantire il migliore equilibrio, tra quelli trovati, è con penalità di \(20\);
+in~\Cref{fig:cost:j48} sono riportati i risultati.
+
+\begin{figure}[H]
+  \centering
+  \adjincludegraphics[width=\linewidth,trim=0 0 {.52\width} {.57\height},clip]{fig/cost-j48.eps}%
+  \caption{Output di \texttt{CostSensitiveClassifier} con \texttt{J48} \emph{unpruned}}%
+  \label{fig:cost:j48}
+\end{figure}
+
+Utilizzando invece come classificatore base il \emph{Naïve Bayes}, i risultati migliorano rispetto al solo classificatore bayesiano, tuttavia le performance rimangono inferiori rispetto al modello costruito con J48;
+probabilmente nonostante l'approccio \emph{cost-based} migliori l'efficacia del modello \texttt{NaiveBayes}, le problematiche espresse nella~\Cref{subsec:bayes} sono talmente importanti da non rendere il classificatore valido nemmeno così utilizzato.
+
+Infine è stato utilizzato come classificatore base \texttt{IBk}, che aveva garantito i risultati migliori finora.
+Applicando i modelli descritti nella~\Cref{subsec:ibk}, alcuni risultati sono considerabili abbastanza validi:
+il miglior risultato in assoluto (\Cref{fig:cost:ibk5}) è stato ottenuto utilizzando \texttt{KNN=5}, \emph{distanza euclidea} e penalità per i record mal classificati di ``\texttt{O}'' uguale a \(5\).
+
+\begin{figure}[H]
+  \centering
+  \adjincludegraphics[width=\linewidth,trim=0 {.03\height} {.55\width} {.57\height},clip]{fig/cost-ibk-5.eps}%
+  \caption{Output di \texttt{CostSensitiveClassifier} con \texttt{IBk} con \texttt{KNN=5}}%
+  \label{fig:cost:ibk5}
+\end{figure}
+
+Osservando la \emph{Confusion Matrix}, si può notare come questo classificatore abbia il più alto numero di veri positivi mai classificati per la classe ``\texttt{O}'',
+a discapito però di un elevato numero di istanze di ``\texttt{N}'' classificate erroneamente.
+Nonostante questo, i valori di \emph{ROC} e delle altre metriche risultano in media superiori agli altri modelli testato.
+
+I buoni risultati ottenuti da questo classificatori sono dovuti all'applicazione di un insieme di tecniche per ridurre l'impatto dello sbilanciamento delle classi a un modello già adeguato,
+creando così un modello che nel complesso risulta abbastanza valido e funzionale.
 
 \subsubsection{Approccio Boosting}
 
-\subsection{Rules}
+L'ultimo approccio tentato è stato il \emph{boosting}, processo che si basa sulla costruzione di più classificatori attribuendo ogni volta un peso maggiore agli elementi mal classificati al passo precedente.
+
+Come per i \emph{classificatori cost-based}, anche qui è possibile specificare un modello di base per costruire la classificazione:
+in modo analogo sono stati testati tutti i tre classificatori base impiegati ai passi precedenti nelle \Cref{subsec:tree,subsec:bayes,subsec:ibk},
+ottenendo i risultati migliori, ancora una volta, con \texttt{IBk}.
+In \Cref{fig:adaboost:ibk5} sono riportati i risultati ottenuti con \texttt{IBk} come classificatore base, \texttt{KNN=5}, \emph{distanza euclidea} e un numero di iterazioni pari a \(10\).
+
+\begin{figure}[H]
+  \centering
+  \adjincludegraphics[width=\linewidth,trim=0 {.03\height} {.55\width} {.57\height},clip]{fig/adaboost-ibk-5.eps}%
+  \caption{Output di \texttt{AdaboostM1} con \texttt{IBk}, \texttt{KNN=5} e \(10\) iterazioni}%
+  \label{fig:adaboost:ibk5}
+\end{figure}
+
+I risultati di questo modello sono buoni: \emph{precision} e \emph{recall} sulla classe ``\texttt{O}'' risultano discrete senza intaccare gli alti valori per ``\texttt{N}'',
+mentre il valore di \emph{ROC} è il più alto fra tutti i modelli creati fin d'ora. Questo può essere considerato uno dei migliori tra quelli provati per il dataset analizzato.
