@@ -1,0 +1,71 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%BoundingBox: 0 0 1018 850
+%%CreationDate: Fri Jan 17 11:45:01 CET 2020
+/Oval { % x y w h filled
+gsave
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+x w 2 div add y h 2 div sub translate
+1 h w div scale
+filled {0 0 moveto} if
+0 0 w 2 div 0 360 arc
+filled {closepath fill} {stroke} ifelse grestore} bind def
+/Rect { % x y w h filled
+/filled exch def /h exch def /w exch def /y exch def /x exch def
+newpath 
+x y moveto
+w 0 rlineto
+0 h neg rlineto
+w neg 0 rlineto
+closepath
+filled {fill} {stroke} ifelse} bind def
+%%BeginProlog
+%%EndProlog
+%%Page 1 1
+/(Monospaced.plain) findfont
+11 scalefont setfont
+0.0 0.0 0.0 setrgbcolor
+/(Monospaced.plain) findfont
+12 scalefont setfont
+0.2 0.2 0.2 setrgbcolor
+1.0 1.0 1.0 setrgbcolor
+0 850 1018 850 true Rect
+0.2 0.2 0.2 setrgbcolor
+5 833 moveto (=== Run information ===) show stroke
+5 803 moveto (Scheme:       weka.classifiers.lazy.IBk -K 9 -W 0 -A "weka.core.neighboursearch.LinearNNSearch -A \"weka.core.EuclideanDistance -R first-last\"") show stroke
+5 788 moveto (Relation:     fertility_Diagnosis) show stroke
+5 773 moveto (Instances:    100) show stroke
+5 758 moveto (Attributes:   10) show stroke
+5 743 moveto (              season) show stroke
+5 728 moveto (              age) show stroke
+5 713 moveto (              childish-disease) show stroke
+5 698 moveto (              trauma) show stroke
+5 683 moveto (              surgical-intervention) show stroke
+5 668 moveto (              fevers) show stroke
+5 653 moveto (              alcoholic) show stroke
+5 638 moveto (              smoking) show stroke
+5 623 moveto (              sitting) show stroke
+5 608 moveto (              output) show stroke
+5 593 moveto (Test mode:    10-fold cross-validation) show stroke
+5 563 moveto (=== Classifier model \(full training set\) ===) show stroke
+5 533 moveto (IB1 instance-based classifier) show stroke
+5 518 moveto (using 9 nearest neighbour\(s\) for classification) show stroke
+5 473 moveto (Time taken to build model: 0 seconds) show stroke
+5 443 moveto (=== Stratified cross-validation ===) show stroke
+5 428 moveto (=== Summary ===) show stroke
+5 398 moveto (Correctly Classified Instances          88               88      %) show stroke
+5 383 moveto (Incorrectly Classified Instances        12               12      %) show stroke
+5 368 moveto (Kappa statistic                          0     ) show stroke
+5 353 moveto (Mean absolute error                      0.1822) show stroke
+5 338 moveto (Root mean squared error                  0.3214) show stroke
+5 323 moveto (Relative absolute error                 83.6549 %) show stroke
+5 308 moveto (Root relative squared error             98.697  %) show stroke
+5 293 moveto (Total Number of Instances              100     ) show stroke
+5 263 moveto (=== Detailed Accuracy By Class ===) show stroke
+5 233 moveto (                 TP Rate  FP Rate  Precision  Recall   F-Measure  MCC      ROC Area  PRC Area  Class) show stroke
+5 218 moveto (                 1,000    1,000    0,880      1,000    0,936      ?        0,659     0,916     N) show stroke
+5 203 moveto (                 0,000    0,000    ?          0,000    ?          ?        0,659     0,227     O) show stroke
+5 188 moveto (Weighted Avg.    0,880    0,880    ?          0,880    ?          ?        0,659     0,834     ) show stroke
+5 158 moveto (=== Confusion Matrix ===) show stroke
+5 128 moveto (  a  b   <-- classified as) show stroke
+5 113 moveto ( 88  0 |  a = N) show stroke
+5 98 moveto ( 12  0 |  b = O) show stroke

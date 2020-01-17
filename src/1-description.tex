@@ -45,52 +45,52 @@ di seguito sono riportati con una breve descrizione.
     Attributo nominale che rappresenta la stagione in cui è stato svolto l'esame.
     Può assumere quattro possibili valori, corrispondenti alle stagioni astronomiche dell'anno solare:
     \begin{itemize}
-      \item \texttt{-1}: \emph{primavera};
-      \item \texttt{-0.33}: \emph{estate};
-      \item \texttt{0.33}: \emph{autunno};
-      \item \texttt{1}: \emph{inverno}.
+      \item \(-1\): \emph{primavera};
+      \item \(-0.33\): \emph{estate};
+      \item \(0.33\): \emph{autunno};
+      \item \(1\): \emph{inverno}.
     \end{itemize}
   \item[Età]
-    Attributo che rappresenta l'età dei partecipanti al test al momento dell'analisi.
-    Può assumere valori numerici in un range compreso tra \texttt{0.5} (corrispondente a 18 anni) e \texttt{1} (corrispondente a 36 anni).
+    Attributo numerico che rappresenta l'età dei partecipanti al test al momento dell'analisi.
+    Può assumere valori numerici in un range compreso tra \texttt{0.5} (corrispondente a 18 anni) e \(1\) (corrispondente a 36 anni).
   \item[Malattie infantili]
     Attributo binario che rappresenta la presenza o meno di patologie clinicamente rilevanti (\emph{Varicella}, \emph{Orecchioni}, \emph{Morbillo}, etc.) contratte dal paziente durante l'infanzia.
-    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    Può assumere i valori \(0\) (sì) e \(1\) (no).
   \item[Incidenti o traumi seri]
     Attributo binario che rappresenta la presenza o meno di traumi/incidenti rilevanti nella storia clinica del paziente.
-    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    Può assumere i valori \(0\) (sì) e \(1\) (no).
   \item[Interventi chirurgici]
     Attributo binario che rappresenta la presenza o meno di interventi chirurgici nella storia clinica del paziente.
-    Può assumere i valori \texttt{0} (sì) e \texttt{1} (no).
+    Può assumere i valori \(0\) (sì) e \(1\) (no).
   \item[Febbre]
     Attributo nominale che rappresenta l'aver contratto, da parte del candidato, febbri particolarmente alte nell'ultimo anno:
     Può assumere tre possibili valori, corrispondenti al periodo:
     \begin{itemize}
-      \item \texttt{-1}: \emph{meno di tre mesi} dalla data dell'analisi;
-      \item \texttt{0}: \emph{più di tre mesi} dalla data dell'analisi;
-      \item \texttt{1}: \emph{mai nell'ultimo anno}.
+      \item \(-1\): \emph{meno di tre mesi} dalla data dell'analisi;
+      \item \(0\): \emph{più di tre mesi} dalla data dell'analisi;
+      \item \(1\): \emph{mai nell'ultimo anno}.
     \end{itemize}
   \item[Consumo di alcool]
     Attributo nominale che rappresenta la frequenza del consumo di alcool, del soggetto in analisi.
     Può assumere cinque valori:
     \begin{itemize}
-      \item \texttt{0.2}: \emph{più volte al giorno};
-      \item \texttt{0.4}: \emph{una volta al giorno};
-      \item \texttt{0.6}: \emph{più volte alla settimana};
-      \item \texttt{0.8}: \emph{una volta a settimana};
-      \item \texttt{1}: \emph{molto raramente o mai}.
+      \item \(0.2\): \emph{più volte al giorno};
+      \item \(0.4\): \emph{una volta al giorno};
+      \item \(0.6\): \emph{più volte alla settimana};
+      \item \(0.8\): \emph{una volta a settimana};
+      \item \(1\): \emph{molto raramente o mai}.
     \end{itemize}
   \item[Fumo]
     Attributo nominale che rappresenta le abitudini del soggetto rispetto al fumo.
     Può assumere tre valori:
     \begin{itemize}
-      \item \texttt{-1}: \emph{non fumatore};
-      \item \texttt{0}: \emph{fumatore sporadico};
-      \item \texttt{1}: \emph{fumatore abituale}.
+      \item \(-1\): \emph{non fumatore};
+      \item \(0\): \emph{fumatore sporadico};
+      \item \(1\): \emph{fumatore abituale}.
     \end{itemize}
   \item[Ore spese seduto]
-    Attributo che quantifica le ore trascorse seduto al giorno dal soggetto.
-    Può assumere valori numerici in un range compreso tra \texttt{0.06} (corrispondente a un'ora) e \texttt{1} (16 ore).
+    Attributo numerico che quantifica le ore trascorse seduto al giorno dal soggetto.
+    Può assumere valori numerici in un range compreso tra \texttt{0.06} (corrispondente a un'ora) e \(1\) (16 ore).
   \end{description}
 
 Oltre agli attributi sopra riportati, i record del dataset sono etichettati con un attributo classe corrispondente alla diagnosi:

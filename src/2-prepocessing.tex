@@ -29,9 +29,7 @@ Non è stato dunque necessario pulire ulteriormente il dataset oltre ai filtri a
 
 \subsection{Normalizzazione}
 
-Oltre le limitate trasformazioni necessario alla corretta importazione dei dati, l'unica trasformazione applicata è stata la \emph{normalizzazione},
-per rendere i range dei vari attributi omogenei tra di loro.
-
-\todo[inline]{Spiegare meglio}
-
-Non è stato necessario applicare \unsure{Serve specificarlo?} alcuna tecnica di campionamento o selezione degli attributi.
+Nell'applicare l'algoritmo \texttt{IBk}, si sono fatte delle prove anche mantenendo gli attributi come \emph{numerici},
+ritenendo che l'equidistanza con cui sono stati rappresentati dai conoscitori del dominio potesse essere rilevante,
+soprattutto con un algoritmo basato sul calcolo della distanza rispetto ai vicini.
+In questo caso, dunque, è stata applicata la \emph{normalizzazione} ai valori numerici, per rendere i range omogenei tra di loro.
