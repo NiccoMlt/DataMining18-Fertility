@@ -23,18 +23,75 @@ come mostrato in~\Cref{fig:classes}, su 100 pazienti in esame, solo 12 risultano
 Questo disequilibrio tra le classi mette in difficoltà i modelli più semplici;
 al fine di ottenere risultati validi, si è messo alla prova diverse configurazioni parametriche.
 
-\todo[inline]{Aggiungere maggiori dettagli per ciascun attributo}
+Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco brevi considerazioni sulle analisi visuali.
+
+\begin{itemize}
+  \item \texttt{season}:
+    La frequenza di esami con esito problematico tendono ad aumentare leggermente durante estate e inverno;
+    questo potrebbe essere dovuto alle condizioni di forte caldo o gelo tipiche di quelle stagioni.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/season.eps}
+    \end{figure}
+  \item \texttt{age}:
+    Discretizzando l'attributo su 18 valori, la distribuzione dei valori risulta non omogenea:
+    tendono a essere molto più frequenti i pazienti con età più vicina a 18 anni che 36.
+    Inoltre, i casi di infertilità tendono a concentrarsi dopo i 24 anni, con picco proprio su tale anno.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/age-discrete.eps}
+    \end{figure}
+  \item \texttt{childish-disease}:
+    I casi di fertilità e infertilità risultano abbastanza bilanciati sulle due colonne dell'istogramma,
+    mentre gli individui affetti da problematiche durante l'infanzia sono molti meno rispetto agli altri;
+    si può supporre quindi che questo attributo non sia particolarmente rilevante ai fini di una diagnosi della fertilità.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/disease.eps}
+    \end{figure}
+  \item \texttt{surgical-intervention}:
+    L'istogramma risulta bilanciato sia rispetto all'attributo che rispetto alla classe;
+    si può quindi supporre che la presenza di un intervento chirurgico non sia strettamente correlata alla fertilità.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/surgical.eps}
+    \end{figure}
+  \item \texttt{fever}:
+    I dati risultano sbilanciati, con una maggiore frequenza per coloro che hanno avuto un episodio di febbre alta a oltre tre mesi di distanza dall'esame;
+    tale squilibrio può essere considerato normale, dato che i periodi sono effettivamente di differente lunghezza.
+    Considerato ciò, la distribuzione degli esami problematici risulta bilanciata tra le colonne dell'istogramma rispetto al numero di elementi per ogni colonna.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/fever.eps}
+    \end{figure}
+  \item \texttt{alcoholic}:
+    I dati risultano sbilanciati con una concentrazione maggiore verso i valori che indicano un raro consumo di alcool.
+    Tra coloro che consumano alcool una o più volte a settimana e quelli che invece si dichiarano astemi, il tasso di esami problematici tende a crescere per la prima categoria rispetto alla seconda, dunque potrebbe esistere una correlazione.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/alcool.eps}
+    \end{figure}
+  \item \texttt{smoking}:
+    Rispetto alle abitudini legate al fumo, i potenziali problemi di sterilità risultano più frequenti negli individui fumatori, occasionali o meno, rispetto ai non fumatori.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/smoke.eps}
+    \end{figure}
+  \item \texttt{sitting}:
+    Il dataset contiene più dati aventi valori nel range \(1\)-\(8\) rispetto a \(8\)-\(16\);
+    all'interno del primo range gli esami problematici tendono a concentrarsi verso i valori più alti, dunque si può considerare il tempo trascorso seduti al giorno come legato ai problemi di fertilità.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.85\textwidth]{fig/sit-discrete.eps}
+    \end{figure}
+\end{itemize}
 
 \subsection{Misure di performance dei classificatori}
 
-\todo[inline]{Migliorare quanto segue}
+Prima di partire con le analisi, occorre stabilire i criteri di misura delle performance dei vari classificatori:
+a tale scopo si è considerato in primo luogo la \emph{Confusion Matrix} prodotta da ogni modello, oltre ai valori di \emph{precision} e \emph{recall} per le classi in gioco, attribuendo un maggiore peso ai valori relativi alla classe ``\texttt{O}'' rispetto a ``\texttt{N}'' e infine del valore della \emph{}{ROC}\@.
 
-Prima di partire con i vari dati, occorre però stabilire i criteri di misura delle performance dei vari classificatori:
-a tale scopo ho tenuto conto in primo luogo della Confusion Matrix prodotta da ogni modello, successivamente dei valori di Precision e Recall per le classi in gioco, attribuendo un maggiore peso ai valori relativi alla classe ``O'' rispetto a ``N'' e infine del valore della ROC\@.
-Come modalità di test ho scelto di applicare in ogni situazione la K-Fold Cross-Validation piuttosto che lo splitting statico dei dati in Training e Test Set, la motivazione dietro a questa scelta è l'esiguo numero di dati presenti nel dataset a cui si presta meglio una modalità come il K-Fold Cross-Validation,
-in quanto pensata appositamente per dataset di piccole dimensioni.
-
-\todo[inline]{Manca qualcosa?}
+Come modalità di test, si è scelto di applicare \emph{K-Fold Cross-Validation} piuttosto che lo splitting statico dei dati in training set e test set, poiché pensato appositamente per dataset di piccole dimensioni come questo.
 
 \subsection{Decision Tree}\label{subsec:tree}
 
@@ -62,7 +119,7 @@ l'albero infatti è costruito da un'unica foglia i cui valori sono assegnati all
 
 Ovviamente questo modello non risultava di una qualità soddisfacente, probabilmente a causa del post pruning,
 il quale, in presenza di un tale sbilanciamento nella frequenza delle classi, tende a ridurre l'albero di classificazione a singola foglia.
-Per porre rimedio a questa cosa si è provato ad aumentare e diminuire \improvement{magari mettere il valore usato? 0.25} il parametro \texttt{confidenceFactor}, responsabile di accentuare o smussare le operazioni di pruning;
+Per porre rimedio a questa cosa si è provato ad aumentare e diminuire il parametro \texttt{confidenceFactor}, responsabile di accentuare o smussare le operazioni di pruning;
 anche però variando questo parametro i risultati ottenuti non sono stati particolarmente differenti.
 
 La situazione è decisamente migliorata disattivando il pruning (tramite parametro \texttt{unpruned}):
