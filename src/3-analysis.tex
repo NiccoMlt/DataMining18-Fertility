@@ -11,7 +11,7 @@ come mostrato in~\Cref{fig:classes}, su 100 pazienti in esame, solo 12 risultano
 
 \begin{figure}[H]
   \centering
-  \includegraphics[width=0.85\textwidth]{fig/classes.eps}%
+  \includegraphics[width=0.8\textwidth]{fig/classes.eps}%
   \caption{%
     L'istogramma rappresenta i valori assunti dall'attributo classe:
     la colonna blu rappresenta le diagnosi di fertilità normale,
@@ -23,7 +23,7 @@ come mostrato in~\Cref{fig:classes}, su 100 pazienti in esame, solo 12 risultano
 Questo disequilibrio tra le classi mette in difficoltà i modelli più semplici;
 al fine di ottenere risultati validi, si è messo alla prova diverse configurazioni parametriche.
 
-Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco brevi considerazioni sulle analisi visuali.
+Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco brevi considerazioni sulle analisi visuali (i colori si riferiscono alle classi come in \Cref{fig:classes}).
 
 \begin{itemize}
   \item \texttt{season}:
@@ -31,7 +31,12 @@ Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco bre
     questo potrebbe essere dovuto alle condizioni di forte caldo o gelo tipiche di quelle stagioni.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/season.eps}
+      \includegraphics[width=0.75\textwidth]{fig/season.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{season};
+        le quattro colonne sono, in ordine: \emph{primavera},\emph{estate}, \emph{autunno}, \emph{inverno}.
+      }%
+      \label{fig:season}
     \end{figure}
   \item \texttt{age}:
     Discretizzando l'attributo su 18 valori, la distribuzione dei valori risulta non omogenea:
@@ -39,7 +44,12 @@ Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco bre
     Inoltre, i casi di infertilità tendono a concentrarsi dopo i 24 anni, con picco proprio su tale anno.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/age-discrete.eps}
+      \includegraphics[width=0.75\textwidth]{fig/age-discrete.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{age};
+        le colonne si riferiscono alle età, dai 18 ai 36 anni.
+      }%
+      \label{fig:age}
     \end{figure}
   \item \texttt{childish-disease}:
     I casi di fertilità e infertilità risultano abbastanza bilanciati sulle due colonne dell'istogramma,
@@ -47,14 +57,36 @@ Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco bre
     si può supporre quindi che questo attributo non sia particolarmente rilevante ai fini di una diagnosi della fertilità.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/disease.eps}
+      \includegraphics[width=0.75\textwidth]{fig/disease.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{childish-disease};
+        le due colonne sono, in ordine: affetti da malattie e non affetti.
+      }%
+      \label{fig:disease}
+    \end{figure}
+  \item \texttt{trauma}:
+    La distribuzione sembra abbastanza bilanciata;
+    si può notare che la maggior parte degli esami di fertilità problematici si concentra in corrispondenza di un trauma nella storia clinica.
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.75\textwidth]{fig/trauma.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{trauma};
+        le due colonne sono, in ordine: affetti da traumi e non affetti.
+      }%
+      \label{fig:trauma}
     \end{figure}
   \item \texttt{surgical-intervention}:
     L'istogramma risulta bilanciato sia rispetto all'attributo che rispetto alla classe;
     si può quindi supporre che la presenza di un intervento chirurgico non sia strettamente correlata alla fertilità.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/surgical.eps}
+      \includegraphics[width=0.75\textwidth]{fig/surgical.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{surgical-intervention};
+        le due colonne sono, in ordine: operati di recente e non operati.
+      }%
+      \label{fig:surgical}
     \end{figure}
   \item \texttt{fever}:
     I dati risultano sbilanciati, con una maggiore frequenza per coloro che hanno avuto un episodio di febbre alta a oltre tre mesi di distanza dall'esame;
@@ -62,27 +94,47 @@ Per quanto riguarda gli altri attributi, di seguito sono riportati in elenco bre
     Considerato ciò, la distribuzione degli esami problematici risulta bilanciata tra le colonne dell'istogramma rispetto al numero di elementi per ogni colonna.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/fever.eps}
+      \includegraphics[width=0.75\textwidth]{fig/fever.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{fever};
+        le due colonne sono, in ordine: affetti da febbre negli ultimi tre mesi, nell'ultimo anno, mai nell'ultimo anno.
+      }%
+      \label{fig:fever}
     \end{figure}
   \item \texttt{alcoholic}:
     I dati risultano sbilanciati con una concentrazione maggiore verso i valori che indicano un raro consumo di alcool.
     Tra coloro che consumano alcool una o più volte a settimana e quelli che invece si dichiarano astemi, il tasso di esami problematici tende a crescere per la prima categoria rispetto alla seconda, dunque potrebbe esistere una correlazione.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/alcool.eps}
+      \includegraphics[width=0.75\textwidth]{fig/alcool.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{alcoholic};
+        le due colonne sono, in ordine: soggetti che consumano alcool più volte al giorno, una volta al giorno, più volte a settimana, una volta a settimana, mai.
+      }%
+      \label{fig:alcool}
     \end{figure}
   \item \texttt{smoking}:
     Rispetto alle abitudini legate al fumo, i potenziali problemi di sterilità risultano più frequenti negli individui fumatori, occasionali o meno, rispetto ai non fumatori.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/smoke.eps}
+      \includegraphics[width=0.75\textwidth]{fig/smoke.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{smoking};
+        le due colonne sono, in ordine: non fumatori, fumatori occasionali, fumatori abituali.
+      }%
+      \label{fig:smoke}
     \end{figure}
   \item \texttt{sitting}:
     Il dataset contiene più dati aventi valori nel range \(1\)-\(8\) rispetto a \(8\)-\(16\);
     all'interno del primo range gli esami problematici tendono a concentrarsi verso i valori più alti, dunque si può considerare il tempo trascorso seduti al giorno come legato ai problemi di fertilità.
     \begin{figure}[H]
       \centering
-      \includegraphics[width=0.85\textwidth]{fig/sit-discrete.eps}
+      \includegraphics[width=0.75\textwidth]{fig/sit-discrete.eps}%
+      \caption{%
+        Istogramma relativo alla distribuzione del dataset su \texttt{sitting};
+        le due colonne sono, in ordine, le ore trascorse seduto al giorno dal soggetto da 1 a 16.
+      }%
+      \label{fig:sit}
     \end{figure}
 \end{itemize}
 
@@ -100,15 +152,14 @@ In particolare, si è scelto di usare \texttt{J48}, implementazione dell'algorit
 esso realizza un albero binario a cui possono essere applicate tecniche di \emph{post pruning}
 per ridurre le dimensioni dell'albero e l'errore commesso dal classificatore.
 
-In primo luogo si è provato a generare un modello applicando i parametri standard impostati da Weka, ottenendo così i risultati riportati in~\Cref{fig:j48}.
-
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 0 0 {.3\height},clip]{fig/j48.eps}%
+  \adjincludegraphics[width=.95\linewidth,trim=0 {.04\height} 0 {.3\height},clip]{fig/j48.eps}%
   \caption{Output di \texttt{J48} eseguito tramite Weka}%
   \label{fig:j48}
 \end{figure}
 
+In primo luogo si è provato a generare un modello applicando i parametri standard impostati da Weka, ottenendo così i risultati riportati in~\Cref{fig:j48}.
 Com'è possibile notare, il classificatore costruisce un modello poco valido:
 per quanto \emph{accuracy}, \emph{precision} e \emph{recall} per la classe ``\texttt{N}'' abbiano valori piuttosto elevati,
 i corrispondenti per ``\texttt{O}'' risultano tendenti a \(0\).
@@ -135,7 +186,7 @@ questa scelta ha finalmente prodotto un risultato notevolmente differente dai pr
   \hfill
   \begin{subfigure}{0.6\textwidth}
     \centering
-    \adjincludegraphics[width=\linewidth,trim=0 0 {.16\width} {.65\height},clip]{fig/j48-unpruned.eps}%
+    \adjincludegraphics[width=\linewidth,trim=0 {.03\height} {.16\width} {.65\height},clip]{fig/j48-unpruned.eps}%
     \label{subfig:j48-unpruned:result}
   \end{subfigure}
   \caption{Albero di classificazione e output ottenuto con \texttt{J48} \emph{unpruned}}%
@@ -163,7 +214,7 @@ costruendo il modello utilizzando i parametri standard impostati dalla workbench
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 0 0 {.76\height},clip]{fig/bayes.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.02\height} 0 {.76\height},clip]{fig/bayes.eps}%
   \caption{Output di \texttt{NaiveBayes} eseguito tramite Weka}%
   \label{fig:bayes}
 \end{figure}
@@ -191,7 +242,7 @@ Applicando i parametri default di Weka, ovvero \texttt{KNN=1} e \emph{distanza e
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 0 {.285\width} {.32\height},clip]{fig/ibk.eps}%
+  \adjincludegraphics[width=.95\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk.eps}%
   \caption{Output di \texttt{IBk} eseguito tramite Weka}%
   \label{fig:ibk:1}
 \end{figure}
@@ -227,7 +278,7 @@ l'unico risultato rilevante è con \texttt{KNN=9}, per il quale si raggiunge la 
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 0 {.285\width} {.32\height},clip]{fig/ibk9.eps}%
+  \adjincludegraphics[width=.95\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk9.eps}%
   \caption{Output di \texttt{IBk} con \texttt{KNN=9}}%
   \label{fig:ibk:9}
 \end{figure}
@@ -253,14 +304,14 @@ infatti, se ad esempio con \texttt{KNN=1} (opzione di default) i risultati sono 
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 {.07\width} {.285\width} {.32\height},clip]{fig/ibk3-num.eps}%
+  \adjincludegraphics[width=.9\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk3-num.eps}%
   \caption{Output di \texttt{IBk} con \texttt{KNN=3} utilizzando gli attributi come numerici}%
   \label{fig:ibk:3-num}
 \end{figure}
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 {.07\width} {.285\width} {.32\height},clip]{fig/ibk5-num.eps}%
+  \adjincludegraphics[width=.9\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk5-num.eps}%
   \caption{Output di \texttt{IBk} con \texttt{KNN=5} utilizzando gli attributi come numerici}%
   \label{fig:ibk:5-num}
 \end{figure}
@@ -353,7 +404,7 @@ In \Cref{fig:adaboost:ibk5} sono riportati i risultati ottenuti con \texttt{IBk}
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=\linewidth,trim=0 {.03\height} {.55\width} {.57\height},clip]{fig/adaboost-ibk-5.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.03\height} {.55\width} {.68\height},clip]{fig/adaboost-ibk-5.eps}%
   \caption{Output di \texttt{AdaboostM1} con \texttt{IBk}, \texttt{KNN=5} e \(10\) iterazioni}%
   \label{fig:adaboost:ibk5}
 \end{figure}
