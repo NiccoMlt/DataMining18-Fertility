@@ -154,7 +154,7 @@ per ridurre le dimensioni dell'albero e l'errore commesso dal classificatore.
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=.95\linewidth,trim=0 {.04\height} 0 {.3\height},clip]{fig/j48.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.04\height} 0 {.3\height},clip]{fig/j48.eps}%
   \caption{Output di \texttt{J48} eseguito tramite Weka}%
   \label{fig:j48}
 \end{figure}
@@ -242,7 +242,7 @@ Applicando i parametri default di Weka, ovvero con parametro \texttt{KNN=1} e \e
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=.95\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk.eps}%
   \caption{Output di \texttt{IBk} eseguito tramite Weka}%
   \label{fig:ibk:1}
 \end{figure}
@@ -279,7 +279,7 @@ Il risultato non è comunque accettabile considerando i valori ottenuti in \emph
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=.95\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk9.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.1\height} {.285\width} {.32\height},clip]{fig/ibk9.eps}%
   \caption{Output di \texttt{IBk} con \texttt{KNN=9}}%
   \label{fig:ibk:9}
 \end{figure}
@@ -305,22 +305,22 @@ infatti, se ad esempio con \texttt{KNN=1} (opzione di default) i risultati sono 
 
 \begin{figure}[H]
   \centering
-  \adjincludegraphics[width=.9\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk3-num.eps}%
+  \adjincludegraphics[width=\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk3-num.eps}%
   \caption{Output di \texttt{IBk} con \texttt{KNN=3} utilizzando gli attributi come numerici}%
   \label{fig:ibk:3-num}
-\end{figure}
-
-\begin{figure}[H]
-  \centering
-  \adjincludegraphics[width=.9\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk5-num.eps}%
-  \caption{Output di \texttt{IBk} con \texttt{KNN=5} utilizzando gli attributi come numerici}%
-  \label{fig:ibk:5-num}
 \end{figure}
 
 Al netto di ciò, si può dire che l'utilizzo degli attributi come numerici permette di avere effettivamente risultati migliori,
 tuttavia il modello arranca ancora nel riconoscimento degli elementi della classe ``\texttt{O}''.
 Le ragioni di questo comportamento sono molto probabilmente non solo dovute allo sbilanciamento nelle classi di output,
 ma anche alla mancanza di una separazione netta tra i dati a livello di valori degli attributi.
+
+\begin{figure}[H]
+  \centering
+  \adjincludegraphics[width=\linewidth,trim=0 {.09\width} {.285\width} {.32\height},clip]{fig/ibk5-num.eps}%
+  \caption{Output di \texttt{IBk} con \texttt{KNN=5} utilizzando gli attributi come numerici}%
+  \label{fig:ibk:5-num}
+\end{figure}
 
 % Ritenendo di poter essere sulla buona strada, si è provato a effettuare un cambio di metrica per misurare la distanza tra punti (ovvero i dati) nello spazio:
 % tra le metriche a disposizione nella workbench, si è provata la \emph{distanza di Čebyšëv} (\texttt{ChebyshevDistance} in Weka), che misura la distanza tra due vettori come la maggiore tra le differenze dei singoli attributi.
