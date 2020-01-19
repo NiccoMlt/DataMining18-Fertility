@@ -35,8 +35,11 @@ after_failure:
   - cat report.log
 deploy:
   provider: releases
-  api_key:
+  edge: true  # enable dpl v2 preview to fix token issue
+  token:
     secure: qIBW1Y9CIc7zSlDIAgVvnedslWnMvewn8BXf9Kpz/L3cvZ3TuYXBX2tqPAEZmchWMx+x+M8SMYyV1ZyNahNBTgVqqowbcdIS/8pDqQtKmCxSswMX5lVEcsrAc22w0Y5fkcI2zd2CTV3pPBaupxQsIb3MCd+vnT3eUOgbCjmxyxooqur4BNP2/Uc6MeVV75ZN85rsxVdhJE1tskiN1qClvkM7zCIV1UE3mDg/PXQHFnS5MglCH2muA/0oSm6/RH/30D9acrdv3UWHxZs6n/3qtFDzlbCcmf6dQllgEDqugdvrat1sljKCU9JyYv6mF5To1452GOie3/AKGc8LsYmwuT63p9tNhA0lz0ObvYYUBrzMGOm6Qmy8TG/qwIJk8uRprDgGLaJRmgJZinCSTW3YFuT+t9TPMNT6TOtNKINSfX5NWyJDd84Wg20eQprQre8OqWlb+ixkFcir0DjD8yjeT5Hlf3zUIhCsFQgPvHhjADCyK3SXZ2TP1oCzwONM0odBe7X+DiBmPIF97kEDgpSdVOyBbc4INkmUjPcH7P67P6tQZb88u8jGEaUKke2WQ89BdVuSE9GEA2RGaQNjOfsI7Wt+NqM5ZDTM9b+PDZV7iKSc8zozMcpLjAlMYgIcEyC0J0e1BDADS7UJnYPPDo6xSX200WkfPeXw2trJ6yjLdqo=
   file: report.pdf
+  cleanup: false
+  draft: true
   on:
     repo: NiccoMlt/DataMining18-Fertility
